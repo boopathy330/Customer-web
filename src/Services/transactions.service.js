@@ -8,7 +8,7 @@ const getAllTransacations = (params) => {
     method: "GET",
     headers,
   };
-  const url = `http://localhost:3001/v1/transaction`;
+  const url = `${config.CUSTOMER_SERV}/v1/transaction`;
   if (params) {
     url = url + "?createdAt" + params.createdAt;
   }
@@ -29,7 +29,7 @@ const addTransacations = (transaction) => {
     body: JSON.stringify(transaction),
   };
   return window
-    .fetch(`http://localhost:3001/v1/transaction`, requestOptions)
+    .fetch(`${config.CUSTOMER_SERV}/v1/transaction`, requestOptions)
     .then(handleResponse)
     .then((data) => {
       return data;

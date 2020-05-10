@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Card from "../Card/Card.component.jsx";
 import "./CardList.component.css";
-import { Row, Col, Button } from "antd";
+import { Row, Col, Button, message } from "antd";
 import { transactionServ } from "../../Services";
 
 export default function CardList(props) {
   const productList = props.productList;
   const [productId, setProductId] = useState([]);
-
   const createTransaction = async () => {
     const userId = window.localStorage.getItem("userId");
     if (productId && productId.length > 0) {
@@ -18,7 +17,10 @@ export default function CardList(props) {
       const createdTransaction = await transactionServ.addTransacations(
         transaction
       );
-      console.log("transactions", transaction);
+      if (createdTransaction._id) {
+        message.success("transaction added successfully");
+        setProductId([]);
+      }
     }
   };
   return (

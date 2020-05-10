@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { transactionActions } from "../../Actions";
 import { Table, DatePicker, Tag } from "antd";
-import moment from "moment";
+import UserSession from "../../Components/UserSession/UserSession.component.jsx";
 
 export default function TransactionPage() {
   const transactionList = useSelector(
@@ -46,6 +46,7 @@ export default function TransactionPage() {
 
   return (
     <div>
+      <UserSession />
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         <h1>Transaction List</h1>
       </div>

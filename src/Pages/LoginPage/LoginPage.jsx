@@ -80,7 +80,7 @@ const Login = () => {
             )}
           </form>
         </div>
-        {/* <div className="overlay-container">
+        <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
@@ -92,7 +92,7 @@ const Login = () => {
               </button>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

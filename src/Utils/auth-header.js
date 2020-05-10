@@ -1,3 +1,5 @@
+import { config } from "../Constants";
+
 export function authHeader() {
   // return authorization header with jwt token
   const token = window.sessionStorage.getItem("token");
@@ -33,7 +35,7 @@ export function checkRefresh() {
         }),
       };
       return window
-        .fetch(`http://localhost:3001/v1/user/auth/token`, requestOptions)
+        .fetch(`${config.CUSTOMER_SERV}/v1/user/auth/token`, requestOptions)
         .then(handleResponse)
         .then((result) => {
           window.sessionStorage.setItem("token", result.accessToken);

@@ -4,7 +4,7 @@ import { productserv } from "../../Services";
 import "./AddProduct.component.jsx";
 import { productActions } from "../../Actions";
 import { message } from "antd";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function AddProduct() {
   const dispatch = useDispatch();

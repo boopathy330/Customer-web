@@ -63,6 +63,13 @@ const logout = () => {
     dispatch({
       type: authConstants.REMOVE_USER_PROFILE,
     });
+    window.sessionStorage.removeItem("token");
+    window.localStorage.removeItem("refreshToken");
+    window.localStorage.removeItem("expiresIn");
+    window.localStorage.removeItem("userId");
+    window.localStorage.removeItem("username");
+    window.sessionStorage.removeItem("role");
+    return Promise.resolve();
   };
 };
 export const authActions = {

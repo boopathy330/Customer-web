@@ -12,7 +12,7 @@ const login = (username, password) => {
     }),
   };
   return window
-    .fetch(`http://localhost:3001/v1/user/auth/token`, requestOptions)
+    .fetch(`${config.CUSTOMER_SERV}/v1/user/auth/token`, requestOptions)
     .then(handleResponse)
     .then((result) => {
       console.log("response", result);
@@ -48,16 +48,18 @@ const logout = () => {
   // remove user from local storage to log user out
   const headers = authHeader();
   const requestOptions = {
-    method: "PUT",
+    method: "POST",
     headers,
+    body: JSON.stringify({
+      user_id: window.localStorage.getItem("userId"),
+      refresh_token: window.localStorage.getItem("refreshToken"),
+    }),
   };
 
   return window
-    .fetch(`https://localhost:3001/v1/users/revoke/token`, requestOptions)
+    .fetch(`${config.CUSTOMER_SERV}/v1/user/revoke/token`, requestOptions)
     .then(handleResponse)
     .then((data) => {
-      window.localStorage.removeItem("token");
-      window.localStorage.removeItem("user");
       return Promise.resolve;
     });
 };

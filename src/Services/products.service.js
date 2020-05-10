@@ -9,7 +9,7 @@ const getProducts = () => {
     headers,
   };
   return window
-    .fetch(`http://localhost:3001/v1/product`, requestOptions)
+    .fetch(`${config.CUSTOMER_SERV}/v1/product`, requestOptions)
     .then(handleResponse)
     .then((data) => {
       return data;
@@ -26,7 +26,7 @@ const addProducts = (product) => {
   };
 
   return window
-    .fetch(`http://localhost:3001/v1/product`, requestOptions)
+    .fetch(`${config.CUSTOMER_SERV}/v1/product`, requestOptions)
     .then(handleResponse)
     .then((data) => {
       return data;

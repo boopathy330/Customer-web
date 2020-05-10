@@ -3,6 +3,7 @@ import { message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { authConstants } from "../../Constants";
 import { useHistory } from "react-router-dom";
+import { config } from "../../Constants";
 
 import "./RegisterPage.css";
 const RegisterPage = () => {
@@ -16,7 +17,7 @@ const RegisterPage = () => {
     e.preventDefault();
 
     try {
-      const response = await window.fetch("http://localhost:3001/v1/user", {
+      const response = await window.fetch(`${config.CUSTOMER_SERV}/v1/user`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,20 +30,10 @@ const RegisterPage = () => {
       const result = await response.json();
       if (result.error) {
         throw result.error;
+      } else {
+        message.success("Registered Successfully");
+        history.push("/login");
       }
-      dispatch({
-        type: authConstants.LOAD_USER_PROFILE,
-        payload: {
-          id: result._id,
-          userName: result.username,
-        },
-      });
-      window.localStorage.setItem("token", result.success.token);
-      window.localStorage.setItem(
-        "user",
-        JSON.stringify(result.success.payload)
-      );
-      message.success("Registered Successfully");
     } catch (err) {
       console.log(err);
       message.error(err.message);

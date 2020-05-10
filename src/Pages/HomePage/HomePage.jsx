@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import CardList from "../../Components/CardList/CardList.component.jsx";
 import Addproduct from "../../Components/AddProduct/AddProduct.component.jsx";
+import UserSession from "../../Components/UserSession/UserSession.component.jsx";
 import { productActions } from "../../Actions";
 
 const HomePage = () => {
@@ -14,6 +15,7 @@ const HomePage = () => {
 
   return (
     <>
+      <UserSession />
       {role && role === "ADMIN" && (
         <div
           style={{
